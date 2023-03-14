@@ -1,0 +1,4 @@
+
+
+tsc \
+    --project tsconfig.json

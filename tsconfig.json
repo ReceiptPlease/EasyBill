@@ -1,0 +1,15 @@
+{
+    "include" : [ "./Source/**/*" ] ,
+
+
+    "compilerOptions" : {
+
+        "baseUrl" : "./Source" ,
+
+        "module" : "commonjs" ,
+        "target" : "ESNext" ,
+        "strict" : true ,
+
+        "skipLibCheck" : true
+    }
+}

@@ -1,0 +1,33 @@
+{
+    "description": "Unofficial wrapper for the EasyBill API",
+    "version": "1.0.0",
+    "name": "easybill",
+    "homepage": "https://github.com/ReceiptPlease/EasyBill",
+    "author": "PhoneDroid",
+    "license": "AGPLv3-or-later",
+    "bugs": {
+        "url": "https://github.com/ReceiptPlease/EasyBill/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ReceiptPlease/EasyBill.git"
+    },
+    "keywords": [
+        "TypeScript",
+        "EasyBill",
+        "API"
+    ],
+    "main": "Source/mod.ts",
+    "scripts": {
+        "build": "bash .config/Tasks/Build.sh",
+        "dev": "bash .config/Tasks/Develop.sh"
+    },
+    "dependencies": {
+        "typescript": "^4.9.5"
+    },
+    "devDependencies": {
+        "@types/node": "^18.15.3",
+        "ts-node-dev": "^2.0.0"
+
+    }
+}

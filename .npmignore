@@ -1,0 +1,10 @@
+
+.config/
+
+Test/
+
+.editorconfig
+.gitignore
+
+package-lock.json
+tsconfig.json
