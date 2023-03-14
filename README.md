@@ -33,7 +33,7 @@ const client = EasyBill
     .use(config);
 
 const documents = await 
-    client.getDocument();
+    client.findDocuments();
 ```
 
 <br>

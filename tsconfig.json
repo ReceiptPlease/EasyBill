@@ -1,5 +1,8 @@
 {
-    "include" : [ "./Source/**/*" ] ,
+    "include" : [
+        "./Source/**/*" ,
+        "./Test/**/*"
+    ],
 
 
     "compilerOptions" : {
