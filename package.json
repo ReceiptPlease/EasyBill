@@ -20,7 +20,8 @@
     "main": "Source/mod.ts",
     "scripts": {
         "build": "bash .config/Tasks/Build.sh",
-        "dev": "bash .config/Tasks/Develop.sh"
+        "dev": "bash .config/Tasks/Develop.sh" ,
+        "generate:types": "bash .config/Tasks/Types.sh"
     },
     "dependencies": {
         "typescript": "^4.9.5"
