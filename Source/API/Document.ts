@@ -1,9 +1,10 @@
 
-import { definitions , paths } from './Types'
+import { definitions , paths } from './Definititons'
 import { Core } from '../Core'
 
 
 type DocumentProps = paths[ '/documents' ][ 'get' ][ 'parameters' ][ 'query' ]
+type DocumentUpdate = paths[ '/documents/{id}' ][ 'put' ][ 'parameters' ][ 'body' ][ 'body' ]
 
 type Documents = definitions[ 'Documents' ]
 type Document = definitions[ 'Document' ]
@@ -27,17 +28,38 @@ async function findDocument ( this : Client , documentId : number ){
 
     const path = `documents/${ documentId }`
 
-    return this.core.get
-        <Document>({ path });
+    return this.core
+        .get<Document>({ path })
+
 }
 
 // async function createDocument ( this : Client ){
 
 // }
 
-// async function updateDocument ( this : Client ){
+type Cause = 'Invalid Document' | 'Not Found'
 
-// }
+type Response = {
+    success : true
+} | {
+    success : false
+    cause : Cause
+}
+
+async function updateDocument ( this : Client , documentId : number , data : DocumentUpdate ){
+
+    const path = `documents/${ documentId }`
+
+    return this.core
+        .put<never>({ path , data })
+        .catch<Response>(( error : any ) => {
+
+            if( Object.hasOwn(error,'success') )
+                return error
+
+            throw error
+        })
+}
 
 // async function deleteDocument ( this : Client ){
 
@@ -69,7 +91,7 @@ function furnish < Type extends Client > ( client : Type ){
 
         // completeDocument ,
         // createDocument ,
-        // updateDocument ,
+        updateDocument ,
         // deleteDocument ,
         // cancelDocument ,
         findDocuments,

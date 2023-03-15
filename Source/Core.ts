@@ -18,6 +18,8 @@ interface InternalRequest {
 }
 
 
+const { stringify } = JSON;
+
 
 class Core {
 
@@ -43,7 +45,7 @@ class Core {
 
     private request <Result> ( config : InternalRequest ){
 
-        const { method , path } = config;
+        const { parameters , method , path , data } = config;
         const { secret , api } = this;
 
 
@@ -57,21 +59,42 @@ class Core {
                 'X-Easybill-Escape' : 'true' ,
                 'Authorization' : token ,
                 'Content-type' : 'application/json' ,
-            }
+            },
 
+            body : stringify(data)
         }
 
-        const url = `${ api }/${ path }`
+        const search = parameters as Record<string,string> | undefined;
+
+        const params = new URLSearchParams(search);
+
+        const url = `${ api }/${ path }?${ params.toString() }`
 
 
         return this.limit.schedule( async () => {
 
             const response = await fetch(url,query)
 
-            const data = await
-                response.json();
+            if( response.body ){
 
-            return data as Result
+                const data = await
+                    response.json();
+
+                return data as Result
+            }
+
+            const { status } = response;
+
+            switch ( status ){
+            case 204 : throw { success : true }
+            case 400 : throw { success : false , cause : 'Invalid Document' }
+            case 404 : throw { success : false , cause : 'Not Found' }
+            case 429 : throw { success : false , cause : 'Too Many Requests' }
+
+            default :
+                throw `Unknown response, status ( ${ status } ) ` +
+                      `response ( ${ stringify(response,null,4) } )`
+            }
         })
     }
 
@@ -100,3 +123,4 @@ class Core {
 
 
 export { Core }
+

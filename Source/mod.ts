@@ -1,20 +1,23 @@
 
 import { Config , ratedLimited } from './Config'
 import { RateLimit } from './RateLimit';
-import { furnish } from './API/Document'
+import { furnish } from './Client'
 import { Core } from './Core'
 
 
 const EasyBill = {
 
-    use : ( config : Config ) => {
+    /**
+     *  Create a client instance with a custom config
+     */
 
-        const core = new Core(config);
+    use : ( config : Config ) =>
+        furnish(new Core(config)) ,
 
-        const client = { core };
 
-        return furnish(client)
-    },
+    /**
+     *  Create a client with a preset limiter
+     */
 
     usePreset ( ratelimit : RateLimit , config : Config ){
         return this.use({
@@ -25,6 +28,9 @@ const EasyBill = {
 }
 
 
-export { EasyBill , Core as Client , Config }
+export { EasyBill , Core }
 
 export { RateLimit } from './RateLimit'
+export type { Config } from './Config'
+
+export * from './API/Types'

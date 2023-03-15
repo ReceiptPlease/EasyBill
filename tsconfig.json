@@ -8,11 +8,13 @@
     "compilerOptions" : {
 
         "baseUrl" : "./Source" ,
+        "outDir" : "./Build",
 
         "module" : "commonjs" ,
         "target" : "ESNext" ,
         "strict" : true ,
 
+        "isolatedModules" : true ,
         "skipLibCheck" : true
     }
 }

@@ -33,4 +33,4 @@ function ratedLimited ( ratelimit : RateLimit ){
 }
 
 
-export { DefaultConfig , ratedLimited , Config }
+export { DefaultConfig , ratedLimited , type Config }
