@@ -51,14 +51,8 @@ async function updateDocument ( this : Client , documentId : number , data : Doc
     const path = `documents/${ documentId }`
 
     return this.core
-        .put<never>({ path , data })
-        .catch<Response>(( error : any ) => {
+        .put<Document>({ path , data })
 
-            if( Object.hasOwn(error,'success') )
-                return error
-
-            throw error
-        })
 }
 
 // async function deleteDocument ( this : Client ){
