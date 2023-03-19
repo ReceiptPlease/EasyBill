@@ -1,20 +1,28 @@
 {
-    "include" : [
-        "./Source/**/*" ,
-        "./Test/**/*"
+    "include" : [ "./Source/**/*.ts" ],
+
+    "exclude" : [
+        "node_modules" ,
+        "lib"
     ],
 
 
     "compilerOptions" : {
 
-        "baseUrl" : "./Source" ,
-        "outDir" : "./Build",
+        "baseUrl" : "Source" ,
+        "outDir" : "Export" ,
 
-        "module" : "commonjs" ,
+        "moduleResolution" : "node" ,
+		"module" : "ESNext" ,
         "target" : "ESNext" ,
-        "strict" : true ,
 
+        "forceConsistentCasingInFileNames" : true ,
+        "esModuleInterop" : true ,
         "isolatedModules" : true ,
-        "skipLibCheck" : true
+        "declarationMap" : true ,
+        "skipLibCheck" : true ,
+        "declaration" : true ,
+        "sourceMap" : true ,
+        "strict" : true
     }
 }
