@@ -1,6 +1,6 @@
 {
     "description": "Unofficial wrapper for the EasyBill API",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "name": "easybill",
     "homepage": "https://github.com/ReceiptPlease/EasyBill",
     "author": "PhoneDroid",
@@ -8,18 +8,21 @@
     "bugs": {
         "url": "https://github.com/ReceiptPlease/EasyBill/issues"
     },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/ReceiptPlease/EasyBill.git"
-    },
+    "repository": "ReceiptPlease/EasyBill" ,
     "keywords": [
         "TypeScript",
         "EasyBill",
         "API"
     ],
-    "main" : "Export/mod.js",
-    "types" : "Export/mod.d.ts",
+    "type" : "module" ,
+    "main" : "./Export/mod.js",
+    "types" : "./Export/mod.d.ts",
+    "exports" : "./Export.mod.js" ,
     "files" : [ "Export" ],
+
+	"engines": {
+		"node": "^18.12.1"
+	},
     "scripts": {
         "build": "bash .config/Tasks/Build.sh",
         "generate:types": "bash .config/Tasks/Types.sh"
