@@ -17,7 +17,7 @@
     "type" : "module" ,
     "main" : "./Export/mod.js",
     "types" : "./Export/mod.d.ts",
-    "exports" : "./Export.mod.js" ,
+    "exports" : "./Export/mod.js" ,
     "files" : [ "Export" ],
 
 	"engines": {
